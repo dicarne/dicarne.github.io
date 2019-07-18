@@ -1,14 +1,14 @@
 ---
-title: pta - 1010 Radix
+title: pat - 1010 Radix
 date: 2019-07-17 22:20:19
 tags: 
-    - pta
+    - pat
 ---
 ## 1010 Radix (25 分)
 Given a pair of positive integers, for example, 6 and 110, can this equation 6 = 110 be true? The answer is yes, if 6 is a decimal number and 110 is a binary number.
 
 Now for any pair of positive integers N1 and N​2, your task is to find the radix of one number while that of the other is given.
-
+<!--more-->
 ### Input Specification:
 Each input file contains one test case. Each case occupies a line which contains 4 positive integers:
 N1 N2 tag radix
@@ -18,14 +18,14 @@ Here N1 and N2 each has no more than 10 digits. A digit is less than its radix a
 ### Output Specification:
 For each test case, print in one line the radix of the other number so that the equation N1 = N2 is true. If the equation is impossible, print Impossible. If the solution is not unique, output the smallest possible radix.
 
->Sample Input 1:
->6 110 1 10
->Sample Output 1:
->2
->Sample Input 2:
->1 ab 1 2
->Sample Output 2:
->Impossible
+#### Sample Input 1:
+6 110 1 10
+#### Sample Output 1:
+2
+#### Sample Input 2:
+1 ab 1 2
+#### Sample Output 2:
+Impossible
 
 ## 这道题干啥呢
 给两个数，告诉你其中一个数的进制，然后问你另一个数是几进制的时候和另一个相等？
