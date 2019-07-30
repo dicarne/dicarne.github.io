@@ -1,5 +1,5 @@
 ---
-title: pat - 1014-Waiting in Line
+title: pat - 1014 Waiting in Line
 date: 2019-07-18 21:27:32
 tags:
     - pat
@@ -31,6 +31,7 @@ For each of the Q customers, print in one line the time at which his/her transac
 2 2 7 5
 1 2 6 4 3 534 2
 3 4 5 6 7
+
 #### Sample Output:
 08:07
 08:06

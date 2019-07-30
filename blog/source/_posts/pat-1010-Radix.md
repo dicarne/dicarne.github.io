@@ -20,10 +20,13 @@ For each test case, print in one line the radix of the other number so that the 
 
 #### Sample Input 1:
 6 110 1 10
+
 #### Sample Output 1:
 2
+
 #### Sample Input 2:
 1 ab 1 2
+
 #### Sample Output 2:
 Impossible
 
