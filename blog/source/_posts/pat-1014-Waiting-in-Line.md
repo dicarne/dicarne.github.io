@@ -2,6 +2,9 @@
 title: pat - 1014 Waiting in Line
 date: 2019-07-18 21:27:32
 tags:
+category:
+    - 计算机
+    - 数据结构
     - pat
 ---
 ## 1014 Waiting in Line (30 分)

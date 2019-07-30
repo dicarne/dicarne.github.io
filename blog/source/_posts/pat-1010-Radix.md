@@ -1,7 +1,11 @@
 ---
 title: pat - 1010 Radix
 date: 2019-07-17 22:20:19
-tags: 
+tags: 进制转换
+    
+category:
+    - 计算机
+    - 数据结构
     - pat
 ---
 ## 1010 Radix (25 分)
