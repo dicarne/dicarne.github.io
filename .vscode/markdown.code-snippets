@@ -37,7 +37,7 @@
 	},
 	"大括号":{
 		"prefix": "select",
-		"body": "\\begin{cases} $1 \\\\ $2 \\end{cases}"
+		"body": "\\begin{cases} $1 \\ $2 \\end{cases}"
 	},
 	"绝对值":{
 		"prefix": "absolute",
