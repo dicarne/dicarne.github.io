@@ -20,6 +20,7 @@ registration_number final_rank location_number local_rank
 The locations are numbered from 1 to N. The output must be sorted in nondecreasing order of the final ranks. The testees with the same score must have the same rank, and the output must be sorted in nondecreasing order of their registration numbers.
 
 #### Sample Input:
+```
 2
 5
 1234567890001 95
@@ -32,8 +33,10 @@ The locations are numbered from 1 to N. The output must be sorted in nondecreasi
 1234567890011 25
 1234567890014 100
 1234567890012 85
+```
 
 #### Sample Output:
+```
 9
 1234567890005 1 1 1
 1234567890014 1 2 1
@@ -44,6 +47,7 @@ The locations are numbered from 1 to N. The output must be sorted in nondecreasi
 1234567890002 7 1 5
 1234567890013 8 2 3
 1234567890011 9 2 4
+```
 
 ## 这道题干啥呢
 给你几组成绩。分别输出他在组内的排名、在所有人中的排名、所在组别（当然还有他的id）
