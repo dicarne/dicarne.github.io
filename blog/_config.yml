@@ -79,5 +79,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/dicarne/dicarne.github.io.git
+  repo: 
+    github: https://github.com/dicarne/dicarne.github.io.git
+    # coding: https://git.dev.tencent.com/dicarne/dicarne_blog.git
   branch: master
