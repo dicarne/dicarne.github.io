@@ -42,5 +42,9 @@
 	"绝对值":{
 		"prefix": "absolute",
 		"body": "\\left| $1 \\right| "
+	},
+	"卡片":{
+		"prefix": "nc",
+		"body": "### Q:\n$1\n\n### A:\n$2\n\n---\n"
 	}
 }

@@ -2,5 +2,6 @@
 {
     "[markdown]": {
         "editor.quickSuggestions": true
-    }
+    },
+    "editor.renderWhitespace": "all"
 }
