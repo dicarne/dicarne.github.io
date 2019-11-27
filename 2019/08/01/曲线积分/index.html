@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="\(\oint_Lf(x,y)ds\) 对弧长的线积分（第一类） 1.判断奇偶性和对称性 \(\begin{cases} 若轴对称，则偶为2倍奇为0 \\ 若关于y=x对称，则可交换xy \end{cases}\) 2.计算 参数方程 \[\begin{cases} x=x(t) \\ y=y(t) \\ \alpha\le t\le\beta \\ \int_\alpha^\beta">
+<meta name="keywords" content="曲线积分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="曲线积分">
+<meta property="og:url" content="http://dicarne.github.io/2019/08/01/曲线积分/index.html">
+<meta property="og:site_name" content="丢">
+<meta property="og:description" content="\(\oint_Lf(x,y)ds\) 对弧长的线积分（第一类） 1.判断奇偶性和对称性 \(\begin{cases} 若轴对称，则偶为2倍奇为0 \\ 若关于y=x对称，则可交换xy \end{cases}\) 2.计算 参数方程 \[\begin{cases} x=x(t) \\ y=y(t) \\ \alpha\le t\le\beta \\ \int_\alpha^\beta">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-20T02:26:37.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="曲线积分">
+<meta name="twitter:description" content="\(\oint_Lf(x,y)ds\) 对弧长的线积分（第一类） 1.判断奇偶性和对称性 \(\begin{cases} 若轴对称，则偶为2倍奇为0 \\ 若关于y=x对称，则可交换xy \end{cases}\) 2.计算 参数方程 \[\begin{cases} x=x(t) \\ y=y(t) \\ \alpha\le t\le\beta \\ \int_\alpha^\beta">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://dicarne.github.io/2019/08/01/曲线积分/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>曲线积分 | 丢</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">丢</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/08/01/曲线积分/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">曲线积分
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-01 14:14:00" itemprop="dateCreated datePublished" datetime="2019-08-01T14:14:00+08:00">2019-08-01</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-20 10:26:37" itemprop="dateModified" datetime="2019-08-20T10:26:37+08:00">2019-08-20</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/" itemprop="url" rel="index"><span itemprop="name">高数</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/曲线积分/" itemprop="url" rel="index"><span itemprop="name">曲线积分</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="oint_lfxyds"><span class="math inline">\(\oint_Lf(x,y)ds\)</span></h3>
+<p>对弧长的线积分（第一类）<br>
+1.判断奇偶性和对称性<br>
+<span class="math inline">\(\begin{cases} 若轴对称，则偶为2倍奇为0 \\ 若关于y=x对称，则可交换xy \end{cases}\)</span></p>
+<p>2.计算<br>
+参数方程<br>
+<span class="math display">\[\begin{cases} x=x(t) \\ y=y(t) \\ \alpha\le t\le\beta \\ \int_\alpha^\beta f(x(t),y(t))\sqrt{x&#39;^2(t)+y&#39;^2(t)}dt \end{cases} \]</span></p>
+<p>直角坐标计算<br>
+<span class="math display">\[\begin{cases} L:y=y(x),a\le x\le b \\ \int_a^bf(x,y(x))\sqrt{1+y&#39;^2(x)}dx\end{cases}\]</span></p>
+<p>极坐标计算<br>
+<span class="math display">\[\begin{cases} \rho=\rho(\theta) \\ \alpha\le x\le\beta \\ \int_{\alpha}^{\beta} f( \rho ( \theta ) \cos \theta, \rho ( \theta ) \sin \theta ) \sqrt { \rho^2 + \rho&#39;^2} d \theta \end{cases} \]</span></p>
+<h5 id="记">记</h5>
+<p>一奇偶对称，二替换变量，三乘根号；<br>
+参数方程<strong>导数平方和</strong>开根号，直角坐标函数<strong>导数平方加一</strong>开根号，极坐标<strong>函数</strong>和<strong>导数平方和</strong>开根号</p>
+<h3 id="int_l-f_1xydxf_2xydy"><span class="math inline">\(\int_L f_1(x,y)dx+f_2(x,y)dy\)</span></h3>
+<p>对坐标的线积分（第二类）</p>
+<p><span class="math inline">\(\int_LPdx+Qdy=\int_L(P\cos\alpha+Q\cos\beta)ds\)</span></p>
+<h4 id="一直接计算-定积分法">一、直接计算-定积分法</h4>
+<p><span class="math inline">\(\int_LPdx+Qdy\)</span></p>
+<p><span class="math inline">\(\begin{cases} 直角坐标： \int_a^bP(x,\phi(x))dx+Q(x,\phi x)\phi&#39;(x)dx\\ 参数方程：\int_\alpha^\beta P(\phi(t),\Phi(t))\phi&#39;(t)dt+Q(\phi(t),\Phi(t))\Phi&#39;(t)dt \end{cases}\)</span></p>
+<h5 id="记-1">记</h5>
+<p>直接替换求积分，记得<span class="math inline">\(d(x)\)</span>里面的<span class="math inline">\(x\)</span>替换后要求导。</p>
+<h4 id="二格林公式">二、格林公式</h4>
+<p><strong>条件</strong></p>
+<ol type="1">
+<li><p>区域为闭曲线，方向逆时针（正向）</p></li>
+<li><p><span class="math inline">\(P(x,y)\)</span>与<span class="math inline">\(Q(x,y)\)</span>处处连续有一阶偏导数（路径无关）</p></li>
+</ol>
+<p><strong>公式</strong></p>
+<p><span class="math inline">\(\oint_L Pdx+Qdy=\iint_D(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})dxdy\)</span></p>
+<p>注意<span class="math inline">\(P\rightarrow dx\rightarrow y\)</span>偏导，在后面；<span class="math inline">\(Q\rightarrow dy\rightarrow x\)</span>偏导，在前面。</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/曲线积分/" rel="tag"># 曲线积分</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/01/重积分的极坐标转换/" rel="next" title="重积分的极坐标转换">
+                <i class="fa fa-chevron-left"></i> 重积分的极坐标转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/02/pat-1025-PAT-Ranking/" rel="prev" title="pat - 1025 PAT Ranking">
+                pat - 1025 PAT Ranking <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+  <p class="site-author-name" itemprop="name">Jiahe Ding</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#oint_lfxyds"><span class="nav-number">1.</span> <span class="nav-text">\(\oint_Lf(x,y)ds\)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#记"><span class="nav-number">1.0.1.</span> <span class="nav-text">记</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#int_l-f_1xydxf_2xydy"><span class="nav-number">2.</span> <span class="nav-text">\(\int_L f_1(x,y)dx+f_2(x,y)dy\)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一直接计算-定积分法"><span class="nav-number">2.1.</span> <span class="nav-text">一、直接计算-定积分法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#记-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">记</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二格林公式"><span class="nav-number">2.2.</span> <span class="nav-text">二、格林公式</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiahe Ding</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="4Ws7sT-TqRBOw3xHxGGlLHtHL7UG4vsISNuf9-GRd0A">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="Q: 方差计算公式 A: \[D(X)=E(X^2)-[E(X)]^2\] \[D(\overline X)=\frac{1}{n}D(X)\] Q: E(X)计算公式 A: \[E(X)=\int^{+\infty}_{-\infty}xf(x)dx\] Q: 假设\(Y=g(X)\)，则\(E(Y)=?\) A: \[E(Y)=E[g(X)]=\int^{+\infty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字特征">
+<meta property="og:url" content="http://dicarne.github.io/2019/10/18/math/概率统计/数字特征/index.html">
+<meta property="og:site_name" content="丢">
+<meta property="og:description" content="Q: 方差计算公式 A: \[D(X)=E(X^2)-[E(X)]^2\] \[D(\overline X)=\frac{1}{n}D(X)\] Q: E(X)计算公式 A: \[E(X)=\int^{+\infty}_{-\infty}xf(x)dx\] Q: 假设\(Y=g(X)\)，则\(E(Y)=?\) A: \[E(Y)=E[g(X)]=\int^{+\infty">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-07T01:10:33.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数字特征">
+<meta name="twitter:description" content="Q: 方差计算公式 A: \[D(X)=E(X^2)-[E(X)]^2\] \[D(\overline X)=\frac{1}{n}D(X)\] Q: E(X)计算公式 A: \[E(X)=\int^{+\infty}_{-\infty}xf(x)dx\] Q: 假设\(Y=g(X)\)，则\(E(Y)=?\) A: \[E(Y)=E[g(X)]=\int^{+\infty">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://dicarne.github.io/2019/10/18/math/概率统计/数字特征/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>数字特征 | 丢</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">丢</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/10/18/math/概率统计/数字特征/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">数字特征
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-18 15:51:56" itemprop="dateCreated datePublished" datetime="2019-10-18T15:51:56+08:00">2019-10-18</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-07 09:10:33" itemprop="dateModified" datetime="2019-11-07T09:10:33+08:00">2019-11-07</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/概率/" itemprop="url" rel="index"><span itemprop="name">概率</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="q">Q:</h3>
+<p>方差计算公式</p>
+<h3 id="a">A:</h3>
+<p><span class="math display">\[D(X)=E(X^2)-[E(X)]^2\]</span><br>
+<span class="math display">\[D(\overline X)=\frac{1}{n}D(X)\]</span></p>
+<h3 id="q-1">Q:</h3>
+<p>E(X)计算公式</p>
+<h3 id="a-1">A:</h3>
+<p><span class="math display">\[E(X)=\int^{+\infty}_{-\infty}xf(x)dx\]</span></p>
+<h3 id="q-2">Q:</h3>
+<p>假设<span class="math inline">\(Y=g(X)\)</span>，则<span class="math inline">\(E(Y)=?\)</span></p>
+<h3 id="a-2">A:</h3>
+<p><span class="math display">\[E(Y)=E[g(X)]=\int^{+\infty}_{-\infty}g(x)f(x)dx\]</span></p>
+<h3 id="q-3">Q:</h3>
+<p>常见随机变量的数学期望与方差<br>
+泊松分布？</p>
+<h3 id="a-3">A:</h3>
+<p>泊松分布：<span class="math inline">\(E(X)=\lambda,D(X)=\lambda\)</span></p>
+<h3 id="q-4">Q:</h3>
+<p>常见随机变量的数学期望与方差<br>
+均匀分布？</p>
+<h3 id="a-4">A:</h3>
+<p>均匀分布：<span class="math inline">\(E(X)=\frac{a+b}{2},D(X)=\frac{(b-a)^2}{12}\)</span></p>
+<h3 id="q-5">Q:</h3>
+<p>常见随机变量的数学期望与方差<br>
+正态分布？</p>
+<h3 id="a-5">A:</h3>
+<p>正态分布：<span class="math inline">\(E(X)=\mu,D(X)=\sigma^2\)</span></p>
+<h3 id="q-6">Q:</h3>
+<p>相关系数<span class="math inline">\(\rho\)</span>？</p>
+<h3 id="a-6">A:</h3>
+<p><span class="math display">\[\rho_{xy}=\frac{Cov(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}\]</span></p>
+<h3 id="q-7">Q:</h3>
+<p><span class="math display">\[Cov(aX,bY)=?\]</span></p>
+<h3 id="a-7">A:</h3>
+<p><span class="math display">\[Cov(aX,bY)=abCov(X,Y)\]</span></p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/14/math/概率统计/分布函数与密度函数/" rel="next" title="分布函数与密度函数">
+                <i class="fa fa-chevron-left"></i> 分布函数与密度函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/30/math/概率统计/估计/" rel="prev" title="估计">
+                估计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+  <p class="site-author-name" itemprop="name">Jiahe Ding</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#q"><span class="nav-number">1.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a"><span class="nav-number">2.</span> <span class="nav-text">A:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-1"><span class="nav-number">3.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-1"><span class="nav-number">4.</span> <span class="nav-text">A:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-2"><span class="nav-number">5.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-2"><span class="nav-number">6.</span> <span class="nav-text">A:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-3"><span class="nav-number">7.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-3"><span class="nav-number">8.</span> <span class="nav-text">A:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-4"><span class="nav-number">9.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-4"><span class="nav-number">10.</span> <span class="nav-text">A:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-5"><span class="nav-number">11.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-5"><span class="nav-number">12.</span> <span class="nav-text">A:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-6"><span class="nav-number">13.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-6"><span class="nav-number">14.</span> <span class="nav-text">A:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-7"><span class="nav-number">15.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-7"><span class="nav-number">16.</span> <span class="nav-text">A:</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiahe Ding</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

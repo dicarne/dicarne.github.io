@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="4Ws7sT-TqRBOw3xHxGGlLHtHL7UG4vsISNuf9-GRd0A">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="计算直线在平面的投影 例 给定直线方程L与平面方程\(\Pi\)，问投影方程？ 解 根据直线方程L计算直线方向向量s，根据平面方程计算平面法向量p，则\(s\times p\)即可得到垂直与平面且过直线L的新平面法向量。与平面\(\Pi\)联立即为投影方程的直线方程。 求过点与平面平行，又与另一直线相交的直线 例 过点\(P(-1,0,4)\)且与平面\(3x-4y+z+10=0\)">
+<meta name="keywords" content="曲面,直线,曲线,平面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="直线、平面、曲线与曲面">
+<meta property="og:url" content="http://dicarne.github.io/2019/08/16/math/直线、平面、曲线与曲面/index.html">
+<meta property="og:site_name" content="丢">
+<meta property="og:description" content="计算直线在平面的投影 例 给定直线方程L与平面方程\(\Pi\)，问投影方程？ 解 根据直线方程L计算直线方向向量s，根据平面方程计算平面法向量p，则\(s\times p\)即可得到垂直与平面且过直线L的新平面法向量。与平面\(\Pi\)联立即为投影方程的直线方程。 求过点与平面平行，又与另一直线相交的直线 例 过点\(P(-1,0,4)\)且与平面\(3x-4y+z+10=0\)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-18T02:06:40.547Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="直线、平面、曲线与曲面">
+<meta name="twitter:description" content="计算直线在平面的投影 例 给定直线方程L与平面方程\(\Pi\)，问投影方程？ 解 根据直线方程L计算直线方向向量s，根据平面方程计算平面法向量p，则\(s\times p\)即可得到垂直与平面且过直线L的新平面法向量。与平面\(\Pi\)联立即为投影方程的直线方程。 求过点与平面平行，又与另一直线相交的直线 例 过点\(P(-1,0,4)\)且与平面\(3x-4y+z+10=0\)">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://dicarne.github.io/2019/08/16/math/直线、平面、曲线与曲面/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>直线、平面、曲线与曲面 | 丢</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">丢</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/08/16/math/直线、平面、曲线与曲面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">直线、平面、曲线与曲面
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-16 21:16:11" itemprop="dateCreated datePublished" datetime="2019-08-16T21:16:11+08:00">2019-08-16</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-18 10:06:40" itemprop="dateModified" datetime="2019-09-18T10:06:40+08:00">2019-09-18</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/" itemprop="url" rel="index"><span itemprop="name">高数</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/直线、平面、曲线与曲面/" itemprop="url" rel="index"><span itemprop="name">直线、平面、曲线与曲面</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="计算直线在平面的投影">计算直线在平面的投影</h3>
+<p><strong>例</strong><br>
+给定直线方程L与平面方程<span class="math inline">\(\Pi\)</span>，问投影方程？<br>
+<strong>解</strong><br>
+根据直线方程L计算直线方向向量s，根据平面方程计算平面法向量p，则<span class="math inline">\(s\times p\)</span>即可得到垂直与平面且过直线L的新平面法向量。与平面<span class="math inline">\(\Pi\)</span>联立即为投影方程的直线方程。</p>
+<h3 id="求过点与平面平行又与另一直线相交的直线">求过点与平面平行，又与另一直线相交的直线</h3>
+<p><strong>例</strong><br>
+过点<span class="math inline">\(P(-1,0,4)\)</span>且与平面<span class="math inline">\(3x-4y+z+10=0\)</span>平行，又与直线<span class="math inline">\(L:\frac{x+1}{1}=\frac{y-3}{1}=\frac{z}{2}\)</span>相交的直线方程为______<br>
+<strong>解</strong><br>
+先过点P做平面的平行面<span class="math inline">\(3(x+1)-4y+(z-4)=0\)</span>，再求它与直线的交点<span class="math inline">\(Q(15,19,32)\)</span>，最后求直线的方向向量（由点P指向Q），即可得到直线方程。</p>
+<h3 id="证明两直线为异面直线">证明两直线为异面直线</h3>
+<p><strong>例</strong><br>
+<span class="math inline">\(L_1:\frac{x-1}{-1}=\frac{y}{2}=\frac{z+1}{1}\)</span>,<span class="math inline">\(L_2:\frac{x+2}{0}=\frac{y-1}{1}=\frac{z-2}{-2}\)</span><br>
+<strong>解</strong><br>
+<span class="math inline">\(M_1\ in\ L_1,\ M_2\ in\ L2,\ (s_1\times s_2)\cdot M_1M_2=0\)</span>意味着共面，否则不共面。</p>
+<h3 id="计算点关于平面的对称点">计算点关于平面的对称点</h3>
+<p><strong>例</strong><br>
+平面<span class="math inline">\(x-2y+z=12\)</span>，点 <span class="math inline">\(P(1,0,-1)\)</span>，求P的对称点。<br>
+<strong>解</strong><br>
+可知平面法向量<span class="math inline">\(n\)</span>为<span class="math inline">\((1,-2,1)\)</span>，即为过点 <span class="math inline">\(P\)</span> 垂直于平面的直线的法向量，因此该垂直直线为 <span class="math inline">\(\frac{x-1}{1}=\frac{y}{-2}=\frac{z+1}{1}\)</span>。<br>
+接下来计算与平面交点：将直线方程转化为参数形式，带入平面方程中求得t，即可算出交点。<br>
+将 <span class="math inline">\(P\)</span> 关于交点对称，即算得对称点。</p>
+<h3 id="计算过直线与曲面的切平面">计算过直线与曲面的切平面</h3>
+<ol type="1">
+<li>可算的直线的平面束、平面束的法向量<span class="math inline">\(n_1\)</span><br>
+</li>
+<li>可算得曲面的法向量<span class="math inline">\(n_2\)</span><br>
+</li>
+<li>因为是切平面，所以<span class="math inline">\(n_1\parallel n_2\)</span>，即两个向量的<span class="math inline">\(x\)</span>、<span class="math inline">\(y\)</span>、<span class="math inline">\(z\)</span>分别成比例。<br>
+</li>
+<li>令切点为<span class="math inline">\(x_0,y_0,z_0\)</span>，联立平面束方程、曲面方程、坐标成比例方程，解出<span class="math inline">\(x_0,y_0,z_0,\lambda\)</span>，代入平面束方程即可解出切平面</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/曲面/" rel="tag"># 曲面</a>
+          
+            <a href="/tags/直线/" rel="tag"># 直线</a>
+          
+            <a href="/tags/曲线/" rel="tag"># 曲线</a>
+          
+            <a href="/tags/平面/" rel="tag"># 平面</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/16/pat/pat-1040-Longest-Symmetric-String/" rel="next" title="pat - 1040 Longest Symmetric String（动态规划）">
+                <i class="fa fa-chevron-left"></i> pat - 1040 Longest Symmetric String（动态规划）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/19/pat/pat-1044-Shopping-in-Mars/" rel="prev" title="pat - 1044 Shopping in Mars">
+                pat - 1044 Shopping in Mars <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+  <p class="site-author-name" itemprop="name">Jiahe Ding</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算直线在平面的投影"><span class="nav-number">1.</span> <span class="nav-text">计算直线在平面的投影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求过点与平面平行又与另一直线相交的直线"><span class="nav-number">2.</span> <span class="nav-text">求过点与平面平行，又与另一直线相交的直线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明两直线为异面直线"><span class="nav-number">3.</span> <span class="nav-text">证明两直线为异面直线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算点关于平面的对称点"><span class="nav-number">4.</span> <span class="nav-text">计算点关于平面的对称点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算过直线与曲面的切平面"><span class="nav-number">5.</span> <span class="nav-text">计算过直线与曲面的切平面</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiahe Ding</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

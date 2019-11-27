@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="4Ws7sT-TqRBOw3xHxGGlLHtHL7UG4vsISNuf9-GRd0A">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="已知曲线（直线）方程，求绕某一轴旋转曲面 例 曲线L: \(\begin{cases} 4x^2+9y^2=25 \\ z=0 \end{cases}\)，求绕y轴旋转一圈的方程。 解 因为绕y轴旋转，因此曲线上每一点对于y轴的半径的平方为 \(x^2+z^2\)，将 \(x^2\)、 \(z^2\) 用y或者常数替代形成等式，即为曲面方程。 \(\because x^2=\frac{25-9">
+<meta name="keywords" content="曲面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="旋转曲面">
+<meta property="og:url" content="http://dicarne.github.io/2019/07/30/math/旋转曲面/index.html">
+<meta property="og:site_name" content="丢">
+<meta property="og:description" content="已知曲线（直线）方程，求绕某一轴旋转曲面 例 曲线L: \(\begin{cases} 4x^2+9y^2=25 \\ z=0 \end{cases}\)，求绕y轴旋转一圈的方程。 解 因为绕y轴旋转，因此曲线上每一点对于y轴的半径的平方为 \(x^2+z^2\)，将 \(x^2\)、 \(z^2\) 用y或者常数替代形成等式，即为曲面方程。 \(\because x^2=\frac{25-9">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-18T02:06:40.543Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="旋转曲面">
+<meta name="twitter:description" content="已知曲线（直线）方程，求绕某一轴旋转曲面 例 曲线L: \(\begin{cases} 4x^2+9y^2=25 \\ z=0 \end{cases}\)，求绕y轴旋转一圈的方程。 解 因为绕y轴旋转，因此曲线上每一点对于y轴的半径的平方为 \(x^2+z^2\)，将 \(x^2\)、 \(z^2\) 用y或者常数替代形成等式，即为曲面方程。 \(\because x^2=\frac{25-9">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://dicarne.github.io/2019/07/30/math/旋转曲面/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>旋转曲面 | 丢</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">丢</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/07/30/math/旋转曲面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">旋转曲面
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-30 15:38:59" itemprop="dateCreated datePublished" datetime="2019-07-30T15:38:59+08:00">2019-07-30</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-18 10:06:40" itemprop="dateModified" datetime="2019-09-18T10:06:40+08:00">2019-09-18</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/" itemprop="url" rel="index"><span itemprop="name">高数</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/旋转曲面/" itemprop="url" rel="index"><span itemprop="name">旋转曲面</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="已知曲线直线方程求绕某一轴旋转曲面">已知曲线（直线）方程，求绕某一轴旋转曲面</h3>
+<p><strong>例</strong> 曲线L: <span class="math inline">\(\begin{cases} 4x^2+9y^2=25 \\ z=0 \end{cases}\)</span>，求绕y轴旋转一圈的方程。</p>
+<p><strong>解</strong> 因为绕y轴旋转，因此曲线上每一点对于y轴的半径的平方为 <span class="math inline">\(x^2+z^2\)</span>，将 <span class="math inline">\(x^2\)</span>、 <span class="math inline">\(z^2\)</span> 用y或者常数替代形成等式，即为曲面方程。 <span class="math inline">\(\because x^2=\frac{25-9y^2}{4}, z^2=0, \therefore x^2+z^2=\frac{25-9y^2}{4}\)</span>，整理可得 <span class="math inline">\(4x^2+9y^2+4z^2=25\)</span><br>
+&gt; 旋转曲面的关键是<strong>建立基于半径r的等式</strong>，<span class="math inline">\((x-2)^2+y^2=r^2=(x-2)^2+y^2\)</span>，将右边的x、y用z的表达式替换，即可得到旋转曲面的方程。</p>
+<h4 id="求在这个曲面上某一点指向外侧的单位法向量">求在这个曲面上某一点指向外侧的单位法向量</h4>
+<p>对该方程求微分，可得 <span class="math inline">\(8xdx+18ydy+8zdz=0\)</span>，而法向量的 <span class="math inline">\(\{x,y,z\}\)</span>中的每个位置等于<strong>微分前面的系数</strong>，因此该法向量为：<span class="math inline">\(\{8x,18y,8z\}\)</span>，将给定的点带入即可算出法向量，再分别除以向量长度即可算出单位法向量。</p>
+<h3 id="已知曲线和平面方程求切平面">已知曲线和平面方程，求切平面</h3>
+<p><strong>例</strong> 已知曲面 <span class="math inline">\(z=1-x^2-y^2\)</span>，平面 <span class="math inline">\(x+y-z+3=0\)</span>，求曲面上与平面平行的切平面为_____。</p>
+<p><strong>解</strong> 设切点<span class="math inline">\((x,y,z)=(x_0,y_0,1-x_0^2+y_0^2)\)</span>，则法向量n= <span class="math inline">\(\pm(2x_0,2y_0,1)\)</span>平行于平面法向量 <span class="math inline">\((1,1,-1)\)</span>，因此可以计算出 <span class="math inline">\((x_0,y_0,z_0)=(-\frac{1}{2},-\frac{1}{2},\frac{1}{2})\)</span>。 则切平面方程为 <span class="math inline">\(-(x+\frac{1}{2})-(y+\frac{1}{2})+(z-\frac{1}{2})=0\)</span></p>
+<h3 id="求曲线在点的切线方程">求曲线在点的切线方程</h3>
+<p><strong>求切向量和切线</strong>：曲线由两个方程构成，分别求两个方程在点的法向量，叉乘即可得到直线方向向量，利用给的点，即可算出切线。<br>
+<strong>求法向量</strong>：分别计算两个方程关于x、y、z的偏导，带入给定点即可算出法向量。<br>
+<strong>求法平面</strong>：根据切向量和切点，写出平面方程，注意平面是垂直与切向量的。</p>
+<h3 id="求旋转曲面在z0和z1之间的体积">求旋转曲面在z=0和z=1之间的体积</h3>
+<p>如果求出旋转曲面是<span class="math inline">\(x^2+y^2=...z\)</span>的形式，则对于每个<span class="math inline">\(z\)</span>的截面为<span class="math inline">\(\pi r^2=\pi (x^2+y^2)\)</span>，则体积为<span class="math inline">\(\pi\int_0^1...zdz\)</span></p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/曲面/" rel="tag"># 曲面</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/30/math/多元函数微分学/" rel="next" title="多元函数微分学">
+                <i class="fa fa-chevron-left"></i> 多元函数微分学
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/30/math/基本判别法/" rel="prev" title="基本判别法">
+                基本判别法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+  <p class="site-author-name" itemprop="name">Jiahe Ding</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#已知曲线直线方程求绕某一轴旋转曲面"><span class="nav-number">1.</span> <span class="nav-text">已知曲线（直线）方程，求绕某一轴旋转曲面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#求在这个曲面上某一点指向外侧的单位法向量"><span class="nav-number">1.1.</span> <span class="nav-text">求在这个曲面上某一点指向外侧的单位法向量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#已知曲线和平面方程求切平面"><span class="nav-number">2.</span> <span class="nav-text">已知曲线和平面方程，求切平面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求曲线在点的切线方程"><span class="nav-number">3.</span> <span class="nav-text">求曲线在点的切线方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求旋转曲面在z0和z1之间的体积"><span class="nav-number">4.</span> <span class="nav-text">求旋转曲面在z=0和z=1之间的体积</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiahe Ding</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
