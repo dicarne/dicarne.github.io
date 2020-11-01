@@ -327,6 +327,421 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/08/01/math/曲线积分/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/01/math/曲线积分/" class="post-title-link" itemprop="url">曲线积分</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-01 14:14:00" itemprop="dateCreated datePublished" datetime="2019-08-01T14:14:00+08:00">2019-08-01</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-04 09:57:49" itemprop="dateModified" datetime="2019-09-04T09:57:49+08:00">2019-09-04</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/" itemprop="url" rel="index"><span itemprop="name">高数</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/曲线积分/" itemprop="url" rel="index"><span itemprop="name">曲线积分</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="oint_lfxyds"><span class="math inline">\(\oint_Lf(x,y)ds\)</span></h3>
+<p>对弧长的线积分（第一类）<br>
+1.判断奇偶性和对称性<br>
+<span class="math inline">\(\begin{cases} 若轴对称，则偶为2倍奇为0 \\ 若关于y=x对称，则可交换xy \end{cases}\)</span></p>
+<p>2.计算<br>
+参数方程<br>
+<span class="math display">\[\begin{cases} x=x(t) \\ y=y(t) \\ \alpha\le t\le\beta \\ \int_\alpha^\beta f(x(t),y(t))\sqrt{x&#39;^2(t)+y&#39;^2(t)}dt \end{cases} \]</span></p>
+<p>直角坐标计算<br>
+<span class="math display">\[\begin{cases} L:y=y(x),a\le x\le b \\ \int_a^bf(x,y(x))\sqrt{1+y&#39;^2(x)}dx\end{cases}\]</span></p>
+<p>极坐标计算<br>
+<span class="math display">\[\begin{cases} \rho=\rho(\theta) \\ \alpha\le x\le\beta \\ \int_{\alpha}^{\beta} f( \rho ( \theta ) \cos \theta, \rho ( \theta ) \sin \theta ) \sqrt { \rho^2 + \rho&#39;^2} d \theta \end{cases} \]</span></p>
+<h5 id="记">记</h5>
+<p>一奇偶对称，二替换变量，三乘根号；<br>
+参数方程<strong>导数平方和</strong>开根号，直角坐标函数<strong>导数平方加一</strong>开根号，极坐标<strong>函数</strong>和<strong>导数平方和</strong>开根号</p>
+<hr>
+<h3 id="int_l-f_1xydxf_2xydy"><span class="math inline">\(\int_L f_1(x,y)dx+f_2(x,y)dy\)</span></h3>
+<p>对坐标的线积分（第二类）</p>
+<p><span class="math inline">\(\int_LPdx+Qdy=\int_L(P\cos\alpha+Q\cos\beta)ds\)</span></p>
+<h4 id="一直接计算-定积分法">一、直接计算-定积分法</h4>
+<p><span class="math inline">\(\int_LPdx+Qdy\)</span></p>
+<p><span class="math inline">\(\begin{cases} 直角坐标： \int_a^bP(x,\phi(x))dx+Q(x,\phi x)\phi&#39;(x)dx\\ 参数方程：\int_\alpha^\beta P(\phi(t),\Phi(t))\phi&#39;(t)dt+Q(\phi(t),\Phi(t))\Phi&#39;(t)dt \end{cases}\)</span></p>
+<h5 id="记-1">记</h5>
+<p>直接替换求积分，记得<span class="math inline">\(d(x)\)</span>里面的<span class="math inline">\(x\)</span>替换后要求导。</p>
+<h4 id="二格林公式">二、格林公式</h4>
+<p><strong>条件</strong></p>
+<ol type="1">
+<li><p>区域为闭曲线，方向逆时针（正向）</p></li>
+<li><p><span class="math inline">\(P(x,y)\)</span>与<span class="math inline">\(Q(x,y)\)</span>处处连续有一阶偏导数（路径无关）</p></li>
+</ol>
+<p><strong>公式</strong></p>
+<p><span class="math inline">\(\oint_L Pdx+Qdy=\iint_D(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})dxdy\)</span></p>
+<p>注意<span class="math inline">\(P\rightarrow dx\rightarrow y\)</span>偏导，在后面；<span class="math inline">\(Q\rightarrow dy\rightarrow x\)</span>偏导，在前面。</p>
+<hr>
+<h3 id="已知复杂曲线求曲线积分">已知复杂曲线，求曲线积分</h3>
+<p><strong>例</strong> 曲线为<span class="math inline">\(x^2+y^2+z^2=1\)</span>与<span class="math inline">\(x+y+z=0\)</span>的交线，则<span class="math inline">\(\oint_L (x+2y)^2ds\)</span>为__________<br>
+<strong>解</strong> 直接算不好算，因此把曲线方程凑积分方程，尽量化简成常数。<br>
+1. 首先展开：<span class="math inline">\((x+2y)^2=x^2+4y^2+4y\)</span><br>
+2. 根据变量对称性：<span class="math inline">\(\oint x^2ds=\oint y^2ds=\oint z^2ds\)</span>，<span class="math inline">\(\oint xyds=\oint yzds=\oint xzds\)</span><br>
+3. 原式=<span class="math inline">\(\oint \frac{5}{3}(x^2+y^2+z^2)+\frac{2}{3}[(x+y+z)^2-(x^2+y^2+z^2)]ds\)</span><br>
+4. =<span class="math inline">\(2Pi\)</span></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/08/01/math/重积分的极坐标转换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/01/math/重积分的极坐标转换/" class="post-title-link" itemprop="url">重积分的极坐标转换</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-01 11:29:27" itemprop="dateCreated datePublished" datetime="2019-08-01T11:29:27+08:00">2019-08-01</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-04 09:57:49" itemprop="dateModified" datetime="2019-09-04T09:57:49+08:00">2019-09-04</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/" itemprop="url" rel="index"><span itemprop="name">高数</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/高数/重积分/" itemprop="url" rel="index"><span itemprop="name">重积分</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本转换">基本转换</h2>
+<h3 id="使用条件">使用条件</h3>
+<p>若出现<span class="math inline">\(x^2+y^2\)</span>，通常将直角坐标转换为极坐标。</p>
+<h3 id="转换方法">转换方法</h3>
+<p>若原式为<span class="math inline">\(\iint f(x,y)dxdy\)</span>： 令<span class="math inline">\(\begin{cases} x=r\cos\theta \\ y=r\sin\theta \end{cases}\)</span>，写成<span class="math inline">\(\int d\theta \int f(r\cos\theta, r\sin\theta)rdr\)</span>的形式，然后考虑积分范围。 <span class="math inline">\(\theta\)</span>的范围为积分区域所占的范围，<span class="math inline">\(r\)</span>的上界是离原点远的边界函数，下界是离原点近的边界函数。</p>
+<h3 id="常见边界转换">常见边界转换</h3>
+<h4 id="积分区域为一个圆">积分区域为一个圆</h4>
+<h5 id="圆在x轴但不是原点且与坐标轴相切">圆在x轴但不是原点，且与坐标轴相切</h5>
+<p>例如给定<span class="math inline">\(x^2+y^2=-2ax\)</span>，易转换为<span class="math inline">\((x-a)^2+y^2=a^2\)</span>，此时圆的边界为<span class="math inline">\(2a\cos\theta\)</span>，写成<span class="math inline">\(\int^{2a\cos\theta}_{0}frdr\)</span>。为什么下界是0呢？因为圆与y轴相切，那么从原点出发与圆相交的线只有两个交点，原点与相对的圆上的点。</p>
+<h5 id="圆在y轴但不是原点且与坐标轴相切">圆在y轴但不是原点，且与坐标轴相切</h5>
+<p>例如给定<span class="math inline">\(x^2+y^2=-2ay\)</span>，易转换为<span class="math inline">\(x^2+(y-a)^2=a^2\)</span>，此时圆的边界为<span class="math inline">\(2a\sin\theta\)</span>，写成<span class="math inline">\(\int^{2a\cos\theta}_{0}frdr\)</span>。</p>
+<h5 id="圆在原点">圆在原点</h5>
+<p>例如给定<span class="math inline">\(x^2+y^2=a^2\)</span>，圆的边界为<span class="math inline">\(a\cos\theta\)</span>。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/07/31/math/积分/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1942,367 +2357,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/07/17/pat/pat-1010-Radix/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiahe Ding">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="丢">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/17/pat/pat-1010-Radix/" class="post-title-link" itemprop="url">pat - 1010 Radix</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-17 22:20:19" itemprop="dateCreated datePublished" datetime="2019-07-17T22:20:19+08:00">2019-07-17</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-04 09:57:49" itemprop="dateModified" datetime="2019-09-04T09:57:49+08:00">2019-09-04</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机/数据结构/pat/" itemprop="url" rel="index"><span itemprop="name">pat</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="radix-25-分">1010 Radix (25 分)</h2>
-<p>Given a pair of positive integers, for example, 6 and 110, can this equation 6 = 110 be true? The answer is yes, if 6 is a decimal number and 110 is a binary number.</p>
-<p>Now for any pair of positive integers N1 and N​2, your task is to find the radix of one number while that of the other is given.
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/17/pat/pat-1010-Radix/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/07/04/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiahe Ding">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="丢">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/04/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-04 19:57:18" itemprop="dateCreated datePublished" datetime="2019-07-04T19:57:18+08:00">2019-07-04</time>
-            </span>
-          
-
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2345,7 +2404,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2504,7 +2563,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

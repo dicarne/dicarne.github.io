@@ -327,6 +327,352 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2020/01/14/将bash换成zsh的注解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/01/14/将bash换成zsh的注解/" class="post-title-link" itemprop="url">将bash换成zsh的注解</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-14 19:28:59" itemprop="dateCreated datePublished" datetime="2020-01-14T19:28:59+08:00">2020-01-14</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-11-01 22:18:01" itemprop="dateModified" datetime="2020-11-01T22:18:01+08:00">2020-11-01</time>
+              </span>
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<h3 id="版本">版本</h3>
+<p>Ubuntu: 16.04LTS WSL 参考：https://www.jianshu.com/p/d194d29e488c</p>
+</blockquote>
+<h2 id="安装zsh">安装zsh</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zsh</span><br></pre></td></tr></table></figure>
+<h2 id="安装oh-my-zsh">安装oh-my-zsh</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>（原本是应该这样的，但由于连接不上，因此使用代理进行下载，假设拥有本地1080端口的socks5代理服务器）<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl --socks5 127.0.0.1:1080 -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="切换zsh主题">切换zsh主题</h2>
+<p><code>ZSH_THEME</code>里面填上你喜欢的主题，内置主题可见：https://github.com/ohmyzsh/ohmyzsh/wiki/Themes<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line">ZSH_THEME=<span class="string">"avit"</span></span><br></pre></td></tr></table></figure></p>
+<p>应用设置<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装自动补全插件">安装自动补全插件</h2>
+<p>（这个插件可能有点卡，不过还好用）<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.oh-my-zsh/custom/plugins/incr</span><br><span class="line"><span class="built_in">cd</span> ~/.oh-my-zsh/custom/plugins/incr</span><br><span class="line">wget http://mimosa-pudica.net/src/incr-0.2.zsh</span><br><span class="line">mv incr-0.2.zsh incr.plguin.zsh</span><br><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<p>修改<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plguin = (git incr)</span><br></pre></td></tr></table></figure></p>
+<p>应用设置<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改环境变量">修改环境变量</h2>
+<p>以node为例，发现node命令找不到了，因此需要修改一下环境变量。<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<p>将第一行<code>export PATH=...</code>取消注释，末尾加上： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure></p>
+<p>应用设置<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/12/18/math/摘录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/18/math/摘录/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-18 10:01:07 / 修改时间：10:50:51" itemprop="dateCreated datePublished" datetime="2019-12-18T10:01:07+08:00">2019-12-18</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="矩阵等价合同相似">矩阵等价、合同、相似</h2>
+<p>相似必合同，合同必等价（反之未必）<br>
+等价：<span class="math inline">\(A=PBQ\)</span>，P、Q可逆<br>
+合同：<span class="math inline">\(A=P^TBP\)</span><br>
+相似：<span class="math inline">\(A=P^{-1}BP\)</span></p>
+<h2 id="梯度旋度">梯度、旋度</h2>
+<p>梯度：对x、y、z分别求偏导，再分别乘以dx、dy、dz<br>
+旋度： <img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/pic/item/8b82b9014a90f603c786e6ed3b12b31bb051ed62.jpg" alt="直角坐标"></p>
+<h2 id="曲率">曲率</h2>
+<p><span class="math display">\[\frac{|y&#39;&#39;|}{(1+y&#39;^2)^{\frac{3}{2}}}\]</span></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/11/12/math/二次型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1828,348 +2174,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/10/01/article/想要的游戏一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiahe Ding">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="丢">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/01/article/想要的游戏一/" class="post-title-link" itemprop="url">想要的游戏·一</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-01 20:58:53" itemprop="dateCreated datePublished" datetime="2019-10-01T20:58:53+08:00">2019-10-01</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-30 10:24:24" itemprop="dateModified" datetime="2019-10-30T10:24:24+08:00">2019-10-30</time>
-              </span>
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>画面：2d - 希望可以是精致可爱的2d画面，3d画面有时会令人眩晕，配置要求也高得多。<br>
-画面风格：可爱、温柔<br>
-游戏人数：多人<br>
-类型标签：<br>
-- RPG：冒险与成长是RPG永恒的主旋律，ROG也应该包含扮演元素。玩家可以选择任何职业，在这个世界中真实的生活下去。<br>
-- 动态：我希望游戏中一切NPC都有他们的故事、行为、逻辑，可以根据事件的发展自行地做出决断，从而令这个世界称为动态地世界。或许需要计算机自己推导逻辑，写出剧本？整个世界的运行也应该是动态的，每日太阳东升西落，气候影响植被与生物……<br>
-- 探索：我希望在一个可以有“无数”可以探索的内容，从而保持新鲜感，营造整个世界观。我希望在几乎所有看起来很神秘的东西——例如荒废的寺庙、幽深的石洞、石壁上的壁画等——都有可以探索的东西，玩家为了探索一样东西的秘密，可以向周围村庄的人询问，在图书中寻找答案。<br>
-- 建造：玩家可以在野外建造建筑，打造自己的秘密基地，而不是只能在固定的地点建造家园。也可以雇佣NPC前来完成微小的工作。甚至可以建造村庄，建造城市。<br>
-- 无主线：我希望这个世界没有固定的主线，玩家做什么取决于玩家想要做什么，根据自己的行为影响这世界，从而产生属于自己的主线。例如刷取好感成为村长，进而步步高升篡夺王位；拜入门派学习高深武功行侠仗义劫富济贫，在世界各地收集宝物；亦或是密谋……<br>
-- 自由武学：武学是自由的，心法提供基础加成与武学栏位，玩家可以搭配寻来的《武学原本》中的各种效果与招式，构建自己独特的招式体系，在自己收集的招式中寻找最优解。</p>
-<p>难点：<br>
-1. 首先这个动态世界别的都好做，几乎玄幻的部分在于NPC的独特推导与行为能力。能做的行为可以抽象成几种，但AI真的可以做出简单的推导从而决定自己的行为，进而生成比较合理的剧情吗？<br>
-2. 同时演绎这么多AI，性能绝对是一个问题，如何合理的模拟众多AI呢？</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/09/28/article/未来，梦想·一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiahe Ding">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="丢">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/28/article/未来，梦想·一/" class="post-title-link" itemprop="url">未来，梦想·一</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-28 10:12:33" itemprop="dateCreated datePublished" datetime="2019-09-28T10:12:33+08:00">2019-09-28</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-30 10:24:24" itemprop="dateModified" datetime="2019-10-30T10:24:24+08:00">2019-10-30</time>
-              </span>
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>秋分刚过，阳光是温暖的，微风是清爽的。每天清晨走在前往教室的路上，看见阳光斜斜地穿过树叶间的夹缝，在地上映出如万花筒般的缤纷图案，不由得感叹，自然真的是太美丽了。<br>
-小时候，看了皮皮鲁，喜欢科学，想发明各种机器自由在世界各地穿梭；长大了点，买了许多在自然中探险的漫画书，喜欢上自然中奇异的地形、生物、风景；又长大了点，喜欢上了哲学，思考我的思想是什么、理性是什么；到上了高中，喜欢上了编程，因为它可以帮助我创造游戏，做出有意思的东西来；上了大学，觉得编程也没什么深刻的，无非是解决问题的工具而已。而计算机，我觉得是人类可以无限地超越自己肉体的局限，创造出虚拟的数字世界，最接近神的领域。<br>
-早上无意中看到一条微博，里面贴了几张图片，是国外艺术家在大自然中建造的小房子，窗外就是连绵不绝的山脉、幽深的峡谷、浸在雾气中的森林，通透的落地窗让自然仅在咫尺之间，令人怦然心动。太美了，我也想每天醒来就躺在大自然的怀抱中，呼吸着清新的空气，开始为我愿意投身的事业而努力。<br>
-当然，那只是设想中的。实际上，现在是不可能达到的。只有科技与生产充分的发展后，才能让如此生活真正称得上是神仙的生活而不是作秀。例如网络、电力、蚊虫、食物、饮水、清洁等一系列问题，若有一天，人类的科技能让人在一亩三分地上真的如同神一般的存在，才可能实现。而这想想，并不是什么不可能的事，又不是要穷尽一切真理。（或许很有钱的话现在就能做到ε=ε=ε=┏(゜ロ゜;)┛）<br>
-我不想以后的几十年，每一天起床都是熟悉的天花板，窗外都是熟悉的高楼大厦，楼下都是熟悉的浓稠车流，一年只有放风的几天可以看看被人们进行雕琢的花园和行道树。<br>
-我想要每天都接触美的事物。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2212,7 +2221,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2371,7 +2380,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -2511,11 +2520,11 @@
   
     
       
+    
+      
+    
+      
         
-      
-    
-      
-    
       
     
       
