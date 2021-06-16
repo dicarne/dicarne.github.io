@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dicarne.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="根据偏导函数求原函数 告诉你\(f(x,y)\)满足二阶偏导、一阶偏导等于一个函数，求原函数， 例 设\(f(x,y)\)满足\(\frac{\partial^2 x}{\partial y^2}&#x3D;2\),\(f&#39;_y(x,0)&#x3D;x\),则\(f(x,y)&#x3D;\)______ 解 \(\because \frac{\partial^2 x}{\partial y^2}&#x3D;2, \ther">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多元函数微分学">
+<meta property="og:url" content="http://dicarne.github.io/2019/07/30/math/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/index.html">
+<meta property="og:site_name" content="丢">
+<meta property="og:description" content="根据偏导函数求原函数 告诉你\(f(x,y)\)满足二阶偏导、一阶偏导等于一个函数，求原函数， 例 设\(f(x,y)\)满足\(\frac{\partial^2 x}{\partial y^2}&#x3D;2\),\(f&#39;_y(x,0)&#x3D;x\),则\(f(x,y)&#x3D;\)______ 解 \(\because \frac{\partial^2 x}{\partial y^2}&#x3D;2, \ther">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-30T06:37:45.000Z">
+<meta property="article:modified_time" content="2021-06-16T12:00:44.892Z">
+<meta property="article:author" content="Jiahe Ding">
+<meta property="article:tag" content="偏导">
+<meta property="article:tag" content="高数">
+<meta property="article:tag" content="间断点">
+<meta property="article:tag" content="梯度">
+<meta property="article:tag" content="方向导数">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://dicarne.github.io/2019/07/30/math/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>多元函数微分学 | 丢</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">丢</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/07/30/math/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          多元函数微分学
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-30 14:37:45" itemprop="dateCreated datePublished" datetime="2019-07-30T14:37:45+08:00">2019-07-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-16 20:00:44" itemprop="dateModified" datetime="2021-06-16T20:00:44+08:00">2021-06-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">高数</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E6%95%B0/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">多元函数微分学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="根据偏导函数求原函数">根据偏导函数求原函数</h3>
+<p>告诉你<span class="math inline">\(f(x,y)\)</span>满足二阶偏导、一阶偏导等于一个函数，求原函数，</p>
+<p><strong>例</strong> 设<span class="math inline">\(f(x,y)\)</span>满足<span class="math inline">\(\frac{\partial^2 x}{\partial y^2}=2\)</span>,<span class="math inline">\(f&#39;_y(x,0)=x\)</span>,则<span class="math inline">\(f(x,y)=\)</span>______</p>
+<p><strong>解</strong> <span class="math inline">\(\because \frac{\partial^2 x}{\partial y^2}=2, \therefore f&#39;_y=2y+\phi(x)\)</span></p>
+<p><span class="math inline">\(\because f&#39;(x,0)=x,\therefore \phi(x)=x,\therefore f&#39;_y=2y+x\)</span></p>
+<p><span class="math inline">\(\because f(x,0)=1,\therefore f(x,y)=y^2+xy+1\)</span> 通过一个二阶偏导,还原成一阶偏导加上另一个变量的函数的形式,一层层往上推,利用所给的条件,便可以得出原函数.</p>
+<h3 id="计算多元函数偏导在不知道函数具体情况下">计算多元函数偏导(在不知道函数具体情况下)</h3>
+<p><strong>例</strong> 求 <span class="math inline">\(z=f(x,xy,x+y^2)\)</span>的 <span class="math inline">\(\frac{\partial z}{\partial x}\)</span></p>
+<p><strong>解</strong> <span class="math inline">\(\frac{\partial z}{\partial x}=f&#39;_1+yf&#39;_2+f&#39;_3\)</span> 贯彻一个思想,要求x的偏导,而<span class="math inline">\(f(x,xy,x+y^2)\)</span>有三个位置(记为1,2,3),就是对于每个存在x的位置求导,再分别乘以该位置的东西关于x的偏导. 例如:<span class="math inline">\(z=f(a(x), b(x,y), c(y))\)</span>,<span class="math inline">\(\frac{\partial z}{\partial x}=\frac{\partial a(x)}{\partial x}f&#39;_1+\frac{\partial b(x,y)}{\partial x}f&#39;_2\)</span>,因为第三个位置和x没有关系,所以不求它. 如果求二阶偏导,对每个一阶偏导的地方都要再求一次每个位置的二阶偏导,而 <span class="math inline">\(f&#39;&#39;_{12}=f&#39;&#39;_{21}\)</span></p>
+<h3 id="已知fxy求dz">已知<span class="math inline">\(f(x,y)\)</span>，求dz</h3>
+<p><strong>例</strong> 设 <span class="math inline">\(z=z(x,y)\)</span>，<span class="math inline">\(\int_1^{x+y+z}{e^{-t^2}dt}=x^2+y^2+z\)</span>确定，求dz</p>
+<p><strong>解</strong> 方法一：首先对x、y分别求偏导 <span class="math inline">\(\frac{\partial z}{\partial x}\)</span>和<span class="math inline">\(\frac{\partial z}{\partial y}\)</span>，而 <span class="math inline">\(dz=\frac{\partial z}{\partial x}dx+\frac{\partial z}{\partial y}dy\)</span> 方法二：如果式子比较简单，直接对函数求关于x、y的微分。</p>
+<h3 id="判断多元函数在某点是否可偏导">判断多元函数在某点是否可偏导</h3>
+<p><strong>例</strong> 设 <span class="math inline">\(f(x,y)=\sin\sqrt{x^2+y^2}\)</span>，则 <span class="math inline">\(f(x,y)\)</span>在<span class="math inline">\((0,0)\)</span>处对x,y是否可偏导？</p>
+<p><strong>解</strong> 判断对一个变量是否可偏导，关键在于令另一个变量不变的同时，这个变量趋近于该点是极限是否存在。 <span class="math inline">\(\because \lim_{x\to0} \frac{f(x,0)-f(0,0)}{x}=\lim \frac{\sin \left|x\right| }{x}=\lim \frac{\left| x \right| }{x}\)</span>不存在，所以对x不可偏导。 <span class="math inline">\(\because \lim_{y\to0}\frac{f(0,y)-f(0,0)}{y}=\lim \frac{\sin y^2}{y}=lim_{y\to0} \frac{y^2}{y}=0\)</span>，所以对y可偏导。</p>
+<h3 id="计算函数的梯度">计算函数的梯度</h3>
+<p><strong>例</strong> <span class="math inline">\(f(x,y)=\arctan{\frac{x}{y} }\)</span>在（0，1）处的梯度为____</p>
+<p><strong>解</strong> grad<span class="math inline">\(\{x,y,z\}=\{\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}\}\)</span> 对每个分量求偏导即可，前面的系数就是梯度的分量。</p>
+<h3 id="计算函数u沿着函数g的梯度方向的方向导数">计算函数u沿着函数g的梯度方向的方向导数</h3>
+<p><strong>例</strong> 求函数 <span class="math inline">\(u=\sqrt{x^2+y^2+z^2}\)</span>沿 <span class="math inline">\(\frac{1}{2}x^2+yz\)</span>的梯度方向的方向导数。</p>
+<p><strong>解</strong> 1. 计算函数的梯度，易得<strong>l</strong>={x,z,y}</p>
+<ol start="2" type="1">
+<li><p>梯度的方向余弦为：<span class="math inline">\(\cos \alpha=\frac{x}{\sqrt{x^2+y^2+z^2} }\)</span>，<span class="math inline">\(\cos \beta=\frac{z}{\sqrt{x^2+y^2+z^2} }\)</span>，<span class="math inline">\(\cos \gamma=\frac{y}{\sqrt{x^2+y^2+z^2} }\)</span></p></li>
+<li><p>计算u的三个偏导数：<span class="math inline">\(\frac{\partial u}{\partial x}=\frac{x}{\sqrt{x^2+y^2+z^2} }\)</span>，<span class="math inline">\(\frac{\partial u}{\partial y}=\frac{y}{\sqrt{x^2+y^2+z^2} }\)</span>，<span class="math inline">\(\frac{\partial u}{\partial z}=\frac{z}{\sqrt{x^2+y^2+z^2} }\)</span></p></li>
+<li><p>故方向导数为 <span class="math inline">\(\frac{\partial u}{\partial l}=\frac{\partial u}{\partial x}\cos\alpha+\frac{\partial u}{\partial y}\cos\beta+\frac{\partial u}{\partial z}\cos\gamma=\frac{x^2+2yz}{x^2+y^2+z^2}\)</span></p></li>
+</ol>
+<p>方向导数相当于梯度的方向余弦与相应方向的偏导数相乘相加。</p>
+<h3 id="求函数间断点">求函数间断点</h3>
+<p>函数间断点可能发生在如下情况： 1. 分母可能为0（包括指数的分母），<span class="math inline">\(\sin x\)</span>或<span class="math inline">\(\cos x\)</span>等三角函数在分母时可能为0的<span class="math inline">\(k\pi或 \frac{k\pi}{2}\)</span><br />
+2. <span class="math inline">\(\tan x\)</span>在<span class="math inline">\(x=\frac{\pi}{2}+k\pi\)</span>的时候<br />
+3. 一些隐藏的间断点，例如需要因式分解产生可能等于0的子式，三角函数恰好和子式可以同时为0（<span class="math inline">\(\frac{x+2}{\sin\pi x}=\frac{x+2}{\sin(\pi(x+2))}\sim \frac{x+2}{\pi(x+2)}\sim \frac{1}{\pi}\)</span>）， 方向导数相当于梯度的方向余弦与相应方向的偏导数相乘相加。</p>
+<h4 id="方向导数的最大值">方向导数的最大值</h4>
+<p>方向导数的最大值相当于梯度的模。<br />
+<span class="math display">\[\sqrt{(\frac{\partial f}{\partial x})^2+(\frac{\partial f}{\partial y})^2+(\frac{\partial f}{\partial z})^2}\]</span><br />
+梯度中可能含有<span class="math inline">\(x,y,z\)</span>，将坐标点代入算出即可。</p>
+<h3 id="全微分">全微分</h3>
+<p><span class="math display">\[P(x,y)dx+Q(x,y)dy\]</span><br />
+当题目跟你说要全微分的时候，意思是：<br />
+<span class="math display">\[\frac{\partial P}{\partial x}=\frac{\partial Q}{\partial y}\]</span><br />
+<span class="math inline">\(\because P(x,y)=\frac{\partial u}{\partial x},\ Q(x,y)=\frac{\partial u}{\partial y}\therefore \frac{\partial ^2 u}{\partial x \partial y}=\frac{\partial ^2 u}{\partial y \partial x}\)</span></p>
+<h4 id="根据全微分求原函数">根据全微分求原函数</h4>
+<p>因为全微分的<span class="math inline">\(P(x,y)\)</span>和<span class="math inline">\(Q(x,y)\)</span>是偏导，因此可以还原出原函数的<span class="math inline">\(x\)</span>、<span class="math inline">\(y\)</span>部分。<br />
+<span class="math inline">\(u(x,y) = \int P(x,y) dx+\Phi(x,y)\)</span><br />
+<span class="math inline">\(u(x,y)&#39;_y = \Phi&#39;(x,y)\)</span></p>
+<h3 id="求函数在区域上的最值">求函数在区域上的最值</h3>
+<p>首先考虑边界内：对函数的<span class="math inline">\(x\)</span>、<span class="math inline">\(y\)</span>分别求偏导，让他们的偏导等于0，求出驻点，计算函数值。<br />
+再考虑边界上：利用拉格朗日乘数法：<br />
+设原函数：<br />
+<span class="math display">\[u(x,y)=x^2-y^2+3\]</span><br />
+区域为：<br />
+<span class="math display">\[x^2+4y^2\le 4\]</span><br />
+令辅助函数为：<br />
+<span class="math display">\[F(x,y)=x^2-y^2+3=\lambda(x^2+4y^2-4)\]</span><br />
+分别求对<span class="math inline">\(x\)</span>、<span class="math inline">\(y\)</span>、<span class="math inline">\(\lambda\)</span>的偏导，令它们等于0，分别求出多对<span class="math inline">\(x\)</span>、<span class="math inline">\(y\)</span>，计算他们的函数值。<br />
+综上，选择最大的为最大值，最小的为最小值。</p>
+<h3 id="求多元函数的极值">求多元函数的极值</h3>
+<p>设函数为：<br />
+<span class="math display">\[z=f(x,y)=x^4+y^4-4xy+5\]</span><br />
+1. 令函数对<span class="math inline">\(x\)</span>、<span class="math inline">\(y\)</span>的偏导为0，求出驻点。<br />
+2. 令<span class="math inline">\(A=\frac{\partial ^2z}{\partial x^2},B=\frac{\partial ^2z}{\partial x \partial y},C=\frac{\partial ^2z}{\partial y^2}\)</span>，将一个（或多个）驻点代入分别计算。<br />
+3. 若<span class="math inline">\(AC-B^2\gt 0\)</span>存在极值，同时若<span class="math inline">\(A\gt0\)</span>为极小值，若<span class="math inline">\(A\lt0\)</span>为极大值。</p>
+<h3 id="证明fxy仅为theta的函数">证明<span class="math inline">\(f(x,y)\)</span>仅为<span class="math inline">\(\theta\)</span>的函数</h3>
+<p>若<span class="math inline">\(u=f(x,y)\)</span><br />
+令<span class="math inline">\(\begin{cases} x=r\cos\theta\\ y=r\sin\theta \end{cases}\)</span><br />
+若要证明仅为<span class="math inline">\(\theta\)</span>的函数而和 <span class="math inline">\(r\)</span> 无关，则对 <span class="math inline">\(r\)</span> 求偏导，若 <span class="math inline">\(\frac{\partial u}{\partial r}=0\)</span>，则<span class="math inline">\(u\)</span>仅为<span class="math inline">\(\theta\)</span>的函数。<br />
+证哪个有关，则证其他的偏导为0。</p>
+<h3 id="二元函数在区域内的最大最小值">二元函数在区域内的最大最小值</h3>
+<p>先计算边界线上的最大最小值。<br />
+计算对于x，y的偏导，找出驻点。<br />
+令<span class="math inline">\(A=\frac{\partial ^2 z}{\partial x^2},B=\frac{\partial ^2 z}{\partial x \partial y},C=\frac{\partial ^2 z}{\partial y^2}\)</span>，计算<span class="math inline">\(AC-B^2\)</span>，若大于0则为极值点，同时若A小于0则为极大值点，若A大于0则为极小值点。<br />
+将函数极值点与边界极值点相比较，找出最大值和最小值点。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%81%8F%E5%AF%BC/" rel="tag"># 偏导</a>
+              <a href="/tags/%E9%AB%98%E6%95%B0/" rel="tag"># 高数</a>
+              <a href="/tags/%E9%97%B4%E6%96%AD%E7%82%B9/" rel="tag"># 间断点</a>
+              <a href="/tags/%E6%A2%AF%E5%BA%A6/" rel="tag"># 梯度</a>
+              <a href="/tags/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0/" rel="tag"># 方向导数</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/22/pat/pat-1017-Queueing-at-bank/" rel="prev" title="pat - 1017 Queueing at bank">
+      <i class="fa fa-chevron-left"></i> pat - 1017 Queueing at bank
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/07/30/math/%E6%97%8B%E8%BD%AC%E6%9B%B2%E9%9D%A2/" rel="next" title="旋转曲面">
+      旋转曲面 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%81%8F%E5%AF%BC%E5%87%BD%E6%95%B0%E6%B1%82%E5%8E%9F%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">根据偏导函数求原函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%81%8F%E5%AF%BC%E5%9C%A8%E4%B8%8D%E7%9F%A5%E9%81%93%E5%87%BD%E6%95%B0%E5%85%B7%E4%BD%93%E6%83%85%E5%86%B5%E4%B8%8B"><span class="nav-number">2.</span> <span class="nav-text">计算多元函数偏导(在不知道函数具体情况下)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5fxy%E6%B1%82dz"><span class="nav-number">3.</span> <span class="nav-text">已知\(f(x,y)\)，求dz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%9C%A8%E6%9F%90%E7%82%B9%E6%98%AF%E5%90%A6%E5%8F%AF%E5%81%8F%E5%AF%BC"><span class="nav-number">4.</span> <span class="nav-text">判断多元函数在某点是否可偏导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%87%BD%E6%95%B0%E7%9A%84%E6%A2%AF%E5%BA%A6"><span class="nav-number">5.</span> <span class="nav-text">计算函数的梯度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%87%BD%E6%95%B0u%E6%B2%BF%E7%9D%80%E5%87%BD%E6%95%B0g%E7%9A%84%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E7%9A%84%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">计算函数u沿着函数g的梯度方向的方向导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E5%87%BD%E6%95%B0%E9%97%B4%E6%96%AD%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">求函数间断点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="nav-number">7.1.</span> <span class="nav-text">方向导数的最大值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%BE%AE%E5%88%86"><span class="nav-number">8.</span> <span class="nav-text">全微分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%85%A8%E5%BE%AE%E5%88%86%E6%B1%82%E5%8E%9F%E5%87%BD%E6%95%B0"><span class="nav-number">8.1.</span> <span class="nav-text">根据全微分求原函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E5%87%BD%E6%95%B0%E5%9C%A8%E5%8C%BA%E5%9F%9F%E4%B8%8A%E7%9A%84%E6%9C%80%E5%80%BC"><span class="nav-number">9.</span> <span class="nav-text">求函数在区域上的最值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E5%80%BC"><span class="nav-number">10.</span> <span class="nav-text">求多元函数的极值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E6%98%8Efxy%E4%BB%85%E4%B8%BAtheta%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">11.</span> <span class="nav-text">证明\(f(x,y)\)仅为\(\theta\)的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%85%83%E5%87%BD%E6%95%B0%E5%9C%A8%E5%8C%BA%E5%9F%9F%E5%86%85%E7%9A%84%E6%9C%80%E5%A4%A7%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">12.</span> <span class="nav-text">二元函数在区域内的最大最小值</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiahe Ding</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiahe Ding</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

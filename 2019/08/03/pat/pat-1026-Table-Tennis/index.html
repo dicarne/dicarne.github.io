@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dicarne.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1026 Table Tennis (30 分) A table tennis club has N tables available to the public. The tables are numbered from 1 to N. For any pair of players, if there are some tables open when they arrive, they w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pat - 1026 Table Tennis">
+<meta property="og:url" content="http://dicarne.github.io/2019/08/03/pat/pat-1026-Table-Tennis/index.html">
+<meta property="og:site_name" content="丢">
+<meta property="og:description" content="1026 Table Tennis (30 分) A table tennis club has N tables available to the public. The tables are numbered from 1 to N. For any pair of players, if there are some tables open when they arrive, they w">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-03T05:37:54.000Z">
+<meta property="article:modified_time" content="2021-06-16T11:29:49.275Z">
+<meta property="article:author" content="Jiahe Ding">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://dicarne.github.io/2019/08/03/pat/pat-1026-Table-Tennis/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>pat - 1026 Table Tennis | 丢</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">丢</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dicarne.github.io/2019/08/03/pat/pat-1026-Table-Tennis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiahe Ding">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="丢">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pat - 1026 Table Tennis
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-03 13:37:54" itemprop="dateCreated datePublished" datetime="2019-08-03T13:37:54+08:00">2019-08-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-16 19:29:49" itemprop="dateModified" datetime="2021-06-16T19:29:49+08:00">2021-06-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/pat/" itemprop="url" rel="index"><span itemprop="name">pat</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="table-tennis-30-分">1026 Table Tennis (30 分)</h2>
+<p>A table tennis club has N tables available to the public. The tables are numbered from 1 to N. For any pair of players, if there are some tables open when they arrive, they will be assigned to the available table with the smallest number. If all the tables are occupied, they will have to wait in a queue. It is assumed that every pair of players can play for at most 2 hours.</p>
+<p>Your job is to count for everyone in queue their waiting time, and for each table the number of players it has served for the day. <span id="more"></span> One thing that makes this procedure a bit complicated is that the club reserves some tables for their VIP members. When a VIP table is open, the first VIP pair in the queue will have the priviledge to take it. However, if there is no VIP in the queue, the next pair of players can take it. On the other hand, if when it is the turn of a VIP pair, yet no VIP table is available, they can be assigned as any ordinary players.</p>
+<h3 id="input-specification">Input Specification:</h3>
+<p>Each input file contains one test case. For each case, the first line contains an integer N (≤10000) - the total number of pairs of players. Then N lines follow, each contains 2 times and a VIP tag: HH:MM:SS - the arriving time, P - the playing time in minutes of a pair of players, and tag - which is 1 if they hold a VIP card, or 0 if not. It is guaranteed that the arriving time is between 08:00:00 and 21:00:00 while the club is open. It is assumed that no two customers arrives at the same time. Following the players' info, there are 2 positive integers: K (≤100) - the number of tables, and M (&lt; K) - the number of VIP tables. The last line contains M table numbers.</p>
+<h3 id="output-specification">Output Specification:</h3>
+<p>For each test case, first print the arriving time, serving time and the waiting time for each pair of players in the format shown by the sample. Then print in a line the number of players served by each table. Notice that the output must be listed in chronological order of the serving time. The waiting time must be rounded up to an integer minute(s). If one cannot get a table before the closing time, their information must NOT be printed.</p>
+<h4 id="sample-input">Sample Input:</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">20:52:00 10 0</span><br><span class="line">08:00:00 20 0</span><br><span class="line">08:02:00 30 0</span><br><span class="line">20:51:00 10 0</span><br><span class="line">08:10:00 5 0</span><br><span class="line">08:12:00 10 1</span><br><span class="line">20:50:00 10 0</span><br><span class="line">08:01:30 15 1</span><br><span class="line">20:53:00 10 1</span><br><span class="line">3 1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<h4 id="sample-output">Sample Output:</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">08:00:00 08:00:00 0</span><br><span class="line">08:01:30 08:01:30 0</span><br><span class="line">08:02:00 08:02:00 0</span><br><span class="line">08:12:00 08:16:30 5</span><br><span class="line">08:10:00 08:20:00 10</span><br><span class="line">20:50:00 20:50:00 0</span><br><span class="line">20:51:00 20:51:00 0</span><br><span class="line">20:52:00 20:52:00 0</span><br><span class="line">3 3 2</span><br></pre></td></tr></table></figure>
+<h2 id="这道题干啥呢">这道题干啥呢</h2>
+<p>有一些网球场，你需要为顾客分配场地，和前面的银行问题比较相似，唯一不同的是这里还会有一些VIP场地和VIP客户，你需要考虑为他们优先分配的问题。</p>
+<h2 id="坑点">坑点</h2>
+<p>这道题提交了大部分对却错了一个，挠头。研究了半天，居然在网上找到一个博客描述了我错的第4点，这才发现，原来我漏看了第一段的<code>It is assumed that every pair of players can play for at most 2 hours.</code><strong>每对用户不能超过两小时。</strong></p>
+<p>因为这句话是在第一段没有仔细看，一般规定都会在后面详细的说，没想到这次不一样，是我太不注意了，给自己一个差评。</p>
+<p>还有，输出时间是<strong>四舍五入</strong>而不是简单取整。</p>
+<h2 id="思路">思路</h2>
+<p>本来想参照银行那样到一个顾客算一次，但是要考虑到等待过程中是否会出现VIP顾客和VIP场地，没有第一时间理清楚关系。因此本着简单的原则，我就每一秒模拟一次，处理这一秒的等待队列，就很方便。</p>
+<p>对于每一秒，</p>
+<ol type="1">
+<li><p>首先把此刻到达的用户加入队尾</p></li>
+<li><p>再看看队列中有没有VIP用户和场地，如果既有VIP场地也有VIP用户，就分配VIP用户到VIP场地。</p></li>
+<li><p>那么剩下的人，要么因为不是VIP不能优先分配，要么虽然是VIP但是没有VIP场地只能和大家一样。所以接下来就依次把队列中的人安排到所有场地中。（<em>注意是所有场地，包括VIP场地。当队列中有VIP用户的时候必然不存空的VIP场地；当没有VIP用户时却可能存在VIP场地，不需要分开讨论。</em>）</p></li>
+<li><p>当时间到了，就不再分配了。输出即可。</p></li>
+</ol>
+<h2 id="代码">代码</h2>
+<p>看了看<a target="_blank" rel="noopener" href="https://www.liuchuo.net/archives/2955">柳婼</a>的代码，果然比我短不少，不过大致扫了一眼没看懂，看她的分析也有好多分类讨论。我的思路就更加简单直白一点，先分配VIP，没有位置再分配剩下的顾客。没有任何思维负担和难度。</p>
+<p>但是我的代码缺点在于多了很多很多次无用的循环，影响效率。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">player</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> arrived_time, play_time, serve_time, wait_time = <span class="number">-1</span>, id;</span><br><span class="line">    <span class="keyword">bool</span> VIP;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">table</span> &#123;</span></span><br><span class="line">    <span class="keyword">bool</span> VIP;</span><br><span class="line">    <span class="keyword">int</span> free_time, served = <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;player&gt; playerlist;</span><br><span class="line">vector&lt;table&gt; tables;</span><br><span class="line">vector&lt;player&gt; que;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findVipTable</span><span class="params">(<span class="keyword">int</span> time)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tables.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (tables[i].VIP &amp;&amp; tables[i].free_time &lt;= time) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findAllTable</span><span class="params">(<span class="keyword">int</span> time)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tables.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (tables[i].free_time &lt;= time) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hasVipInQue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; que.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (que[i].VIP) <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, K, M, hh, mm, ss, vv, Mo;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        player p;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d:%d:%d&quot;</span>, &amp;hh, &amp;mm, &amp;ss);</span><br><span class="line">        p.arrived_time = hh * <span class="number">3600</span> + mm * <span class="number">60</span> + ss;</span><br><span class="line">        cin &gt;&gt; p.play_time;</span><br><span class="line">        <span class="comment">// 游玩时间不得超过2小时</span></span><br><span class="line">        <span class="keyword">if</span> (p.play_time &gt; <span class="number">120</span>) p.play_time = <span class="number">120</span>;</span><br><span class="line">        p.play_time *= <span class="number">60</span>;</span><br><span class="line">        cin &gt;&gt; vv;</span><br><span class="line">        <span class="keyword">if</span> (vv == <span class="number">0</span>)</span><br><span class="line">            p.VIP = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p.VIP = <span class="literal">true</span>;</span><br><span class="line">        playerlist.<span class="built_in">push_back</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(playerlist.<span class="built_in">begin</span>(), playerlist.<span class="built_in">end</span>(),</span><br><span class="line">         [](player l, player r) &#123; <span class="keyword">return</span> l.arrived_time &lt; r.arrived_time; &#125;);</span><br><span class="line">    cin &gt;&gt; K &gt;&gt; M;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; K; i++) &#123;</span><br><span class="line">        tables.<span class="built_in">push_back</span>(&#123;<span class="literal">false</span>, <span class="number">8</span> * <span class="number">3600</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++) &#123;</span><br><span class="line">        cin &gt;&gt; Mo;</span><br><span class="line">        tables[Mo - <span class="number">1</span>].VIP = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加入所有提前到的人</span></span><br><span class="line">    <span class="keyword">while</span> (index &lt; playerlist.<span class="built_in">size</span>() &amp;&amp;</span><br><span class="line">           playerlist[index].arrived_time &lt; <span class="number">8</span> * <span class="number">3600</span>) &#123;</span><br><span class="line">        playerlist[index].id = index;</span><br><span class="line">        que.<span class="built_in">push_back</span>(playerlist[index]);</span><br><span class="line">        index++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 模拟到达</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> time = <span class="number">8</span> * <span class="number">3600</span>; time &lt; <span class="number">21</span> * <span class="number">3600</span>; time++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; playerlist.<span class="built_in">size</span>() &amp;&amp;</span><br><span class="line">            playerlist[index].arrived_time == time) &#123;</span><br><span class="line">            playerlist[index].id = index;</span><br><span class="line">            que.<span class="built_in">push_back</span>(playerlist[index]);</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> tableid, vipno;</span><br><span class="line">        player front;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理VIP</span></span><br><span class="line">        <span class="keyword">while</span> ((vipno = <span class="built_in">hasVipInQue</span>()) &gt;= <span class="number">0</span> &amp;&amp;</span><br><span class="line">               (tableid = <span class="built_in">findVipTable</span>(time)) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            tables[tableid].free_time = time + que[vipno].play_time;</span><br><span class="line">            tables[tableid].served++;</span><br><span class="line">            playerlist[que[vipno].id].wait_time =</span><br><span class="line">                time - playerlist[que[vipno].id].arrived_time;</span><br><span class="line">            que.<span class="built_in">erase</span>(que.<span class="built_in">begin</span>() + vipno);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 处理剩下队列中的人（找不到VIP桌的VIP用户和普通人）</span></span><br><span class="line">        <span class="keyword">while</span> (!que.<span class="built_in">empty</span>() &amp;&amp; (tableid = <span class="built_in">findAllTable</span>(time)) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            tables[tableid].free_time = time + que[<span class="number">0</span>].play_time;</span><br><span class="line">            playerlist[que[<span class="number">0</span>].id].wait_time =</span><br><span class="line">                time - playerlist[que[<span class="number">0</span>].id].arrived_time;</span><br><span class="line">            tables[tableid].served++;</span><br><span class="line">            que.<span class="built_in">erase</span>(que.<span class="built_in">begin</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 根据服务时间排序</span></span><br><span class="line">    <span class="built_in">sort</span>(playerlist.<span class="built_in">begin</span>(), playerlist.<span class="built_in">end</span>(), [](player l, player r) &#123;</span><br><span class="line">        <span class="keyword">if</span> (l.arrived_time &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (r.arrived_time &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> l.arrived_time + l.wait_time &lt; r.arrived_time + r.wait_time;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; playerlist.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (playerlist[i].wait_time &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> player&amp; p = playerlist[i];</span><br><span class="line">            <span class="keyword">int</span> min = p.wait_time / <span class="number">60.0</span>;</span><br><span class="line">            <span class="keyword">if</span> (p.wait_time % <span class="number">60</span> &gt;= <span class="number">30</span>) min++;</span><br><span class="line">            <span class="keyword">int</span> tt;</span><br><span class="line"></span><br><span class="line">            hh = p.arrived_time / <span class="number">3600</span>;</span><br><span class="line">            mm = (p.arrived_time - hh * <span class="number">3600</span>) / <span class="number">60</span>;</span><br><span class="line">            tt = p.arrived_time - hh * <span class="number">3600</span> - mm * <span class="number">60</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%02d:%02d:%02d &quot;</span>, hh, mm, tt);</span><br><span class="line">            hh = (p.arrived_time + p.wait_time) / <span class="number">3600</span>,</span><br><span class="line">            mm = ((p.arrived_time + p.wait_time) - hh * <span class="number">3600</span>) / <span class="number">60</span>,</span><br><span class="line">            tt = (p.arrived_time + p.wait_time) - hh * <span class="number">3600</span> - mm * <span class="number">60</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%02d:%02d:%02d %d\n&quot;</span>, hh, mm, tt, min);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tables.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">            cout &lt;&lt; tables[i].served;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            cout &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; tables[i].served;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/02/pat/pat-1025-PAT-Ranking/" rel="prev" title="pat - 1025 PAT Ranking">
+      <i class="fa fa-chevron-left"></i> pat - 1025 PAT Ranking
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/03/pat/pat-1028-List-Sorting/" rel="next" title="pat - 1028 List Sorting">
+      pat - 1028 List Sorting <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#table-tennis-30-%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">1026 Table Tennis (30 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#input-specification"><span class="nav-number">1.1.</span> <span class="nav-text">Input Specification:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output-specification"><span class="nav-number">1.2.</span> <span class="nav-text">Output Specification:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sample-input"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sample Input:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sample-output"><span class="nav-number">1.2.2.</span> <span class="nav-text">Sample Output:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E9%81%93%E9%A2%98%E5%B9%B2%E5%95%A5%E5%91%A2"><span class="nav-number">2.</span> <span class="nav-text">这道题干啥呢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%91%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">坑点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">4.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiahe Ding</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiahe Ding</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
